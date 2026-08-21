@@ -308,6 +308,9 @@ body {
 
 @media (max-width: 620px) {
 
+    .instrucao-teclado {
+    display: none;
+}
     .controles {
         width: 210px;
         margin: 22px auto 20px;
