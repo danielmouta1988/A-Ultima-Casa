@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>A Última Casa - Chess</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="game">
+
+        <header class="hud">
+
+            <section class="hud-item">
+                <span class="hud-label">MOVIMENTOS</span>
+                <span id="movimentos" class="hud-value">0</span>
+            </section>
+
+            <section class="hud-item">
+                <span class="hud-label">TEMPO</span>
+                <span id="tempo" class="hud-value">0.00s</span>
+            </section>
+
+            <section class="ranking">
+                <span class="hud-label">MELHORES</span>
+
+                <div id="ranking-list">
+                    <div>1º --</div>
+                    <div>2º --</div>
+                    <div>3º --</div>
+                    <div>4º --</div>
+                    <div>5º --</div>
+                </div>
+            </section>
+
+        </header>
+
+        <section id="tabuleiro" class="tabuleiro">
+</section>
+
+<section id="resultado" class="resultado escondido">
+    <h1 id="resultado-titulo"></h1>
+    <div id="resultado-info"></div>
+
+    <div class="resultado-instrucao">
+        R&nbsp;&nbsp;|&nbsp;&nbsp;JOGAR NOVAMENTE
+    </div>
+</section>
+
+<footer class="instrucoes">
+
+    <div>
+        Setas direcionais
+        <span>•</span>
+        R&nbsp;&nbsp;Reiniciar após o fim
+    </div>
+
+    <div class="objetivo">
+        Objetivo: alcance a Dama sem usar novamente as mesmas casas.
+    </div>
+
+</footer>
+
+<section class="controles" aria-label="Controles do jogo">
+
+    <button id="btn-cima" class="controle controle-cima">▲</button>
+
+    <button id="btn-esquerda" class="controle controle-esquerda">◀</button>
+
+    <button id="btn-reiniciar" class="controle controle-reiniciar">↻</button>
+
+    <button id="btn-direita" class="controle controle-direita">▶</button>
+
+    <button id="btn-baixo" class="controle controle-baixo">▼</button>
+
+</section>
+
+        <footer class="instrucoes">
+
+            <div>
+                Setas direcionais
+                <span>•</span>
+                R&nbsp;&nbsp;Reiniciar após o fim
+            </div>
+
+            <div class="objetivo">
+                Objetivo: alcance a Dama sem usar novamente as mesmas casas.
+            </div>
+
+        </footer>
+
+    </main>
+
+    <script src="game.js"></script>
+
+</body>
+</html>
