@@ -1,141 +1,54 @@
-# ♟️ A Última Casa - Chess
+# A Última Casa ♛
 
-**A Última Casa - Chess** é um jogo de estratégia desenvolvido em **Python + Pygame**, no qual o jogador controla um Rei em um tabuleiro 5x5 e precisa alcançar a Dama antes de ficar sem movimentos disponíveis.
+Um jogo de estratégia simples e desafiador.
 
-O jogo combina movimentação simples, planejamento e tomada de decisão. Cada movimento altera o caminho disponível, já que uma casa utilizada não pode ser utilizada novamente.
+Seu objetivo é alcançar a **Dama** usando as setas do teclado, mas existe uma regra: **você não pode passar duas vezes pela mesma casa**.
 
-## 🎮 Como jogar
+Cada movimento deixa a casa anterior indisponível, então cada decisão pode aproximar você da vitória ou transformar o tabuleiro em uma pequena armadilha geométrica.
 
-Você começa em uma posição aleatória do tabuleiro.
+## Como jogar
 
-Seu objetivo é:
+- Use as **setas direcionais** para movimentar o Rei.
+- Alcance a **Dama** para vencer.
+- Cada casa utilizada desaparece e não pode ser usada novamente.
+- Se você ficar sem movimentos possíveis, perde a partida.
+- Após o fim do jogo, pressione **R** para jogar novamente.
 
-> **Alcançar a Dama utilizando o maior número possível de casas, sem ficar preso.**
+## Recursos
 
-A cada movimento realizado, a casa anterior é bloqueada.
+- ♛ Tabuleiro 5×5
+- 🎯 Posição inicial aleatória
+- ⏱️ Cronômetro
+- 🔢 Contador de movimentos
+- 🏆 Ranking dos melhores resultados
+- 🔄 Reinício rápido após cada partida
+- 📱 Layout responsivo
 
-O jogo termina de duas formas:
+## Jogue online
 
-- 🏆 **Vitória:** o Rei alcança a Dama.
-- 💀 **Derrota:** o Rei fica sem nenhuma casa disponível para continuar.
+O jogo está disponível pelo GitHub Pages:
 
-## 🕹️ Controles
+https://danielmouta1988.github.io/A-Ultima-Casa/
 
-| Tecla | Ação |
-|---|---|
-| ↑ | Mover para cima |
-| ↓ | Mover para baixo |
-| ← | Mover para esquerda |
-| → | Mover para direita |
-| R | Jogar novamente após o fim da partida |
-
-## 🏆 Ranking
-
-O jogo possui um ranking local com os **5 melhores resultados**.
-
-Os resultados são armazenados no arquivo:
-
-```text
-recordes.json
-```
-
-O ranking considera o número de casas percorridas e, em caso de empate, o menor tempo.
-
-O arquivo `recordes.json` não é enviado ao GitHub, pois faz parte dos dados locais de cada jogador.
-
-## 🧩 Estrutura do projeto
+## Estrutura do projeto
 
 ```text
 A-Ultima-Casa/
-│
 ├── assets/
-│   ├── Rajdhani-Regular.ttf
 │   ├── dama.png
-│   └── rei.png
+│   ├── rei.png
+│   └── Rajdhani-Regular.ttf
+│
+├── web/
+│   ├── index.html
+│   ├── game.js
+│   └── style.css
 │
 ├── main.py
 ├── visual.py
-├── .gitignore
-└── recordes.json
+└── README.md
 ```
-
-### `main.py`
-
-Responsável pela lógica principal do jogo:
-
-- criação do tabuleiro;
-- movimentação do jogador;
-- controle da partida;
-- vitória e derrota;
-- contagem de movimentos;
-- cronômetro;
-- ranking.
-
-### `visual.py`
-
-Responsável pelos elementos visuais:
-
-- desenho das casas;
-- Rei;
-- Dama;
-- destaque da casa objetivo;
-- fonte utilizada pelo jogo.
-
-## ⚙️ Tecnologias
-
-- **Python 3**
-- **Pygame**
-- **Git**
-- **GitHub**
-
-## 🚀 Como executar
-
-Clone o repositório:
-
-```bash
-git clone https://github.com/danielmouta1988/A-Ultima-Casa.git
-```
-
-Entre na pasta:
-
-```bash
-cd A-Ultima-Casa
-```
-
-Instale o Pygame:
-
-```bash
-pip install pygame-ce
-```
-
-Execute o jogo:
-
-```bash
-python main.py
-```
-
-## 📌 Versão
-
-**v1.0.0**
-
-Primeira versão jogável do projeto, contendo:
-
-- tabuleiro 5x5;
-- movimentação do Rei;
-- Dama como objetivo;
-- sistema de vitória;
-- sistema de derrota;
-- cronômetro;
-- contador de movimentos;
-- ranking local;
-- destaque visual da casa objetivo;
-- fonte personalizada;
-- interface e instruções do jogo.
-
-## 📄 Licença
-
-Este projeto atualmente não possui uma licença definida.
 
 ---
 
-Desenvolvido como projeto independente em Python e Pygame.
+**A Última Casa** é um pequeno jogo de estratégia onde cada movimento muda o caminho que ainda existe. Chegar à Dama é o objetivo. Não se fechar no próprio labirinto é o desafio. ♛
