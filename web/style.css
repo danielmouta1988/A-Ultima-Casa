@@ -1,0 +1,416 @@
+@font-face {
+    font-family: "Rajdhani";
+    src: url("../assets/Rajdhani-Regular.ttf") format("truetype");
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #141414;
+    color: #e6e6e6;
+    font-family: "Rajdhani", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game {
+    width: 600px;
+    max-width: 94vw;
+    position: relative;
+}
+
+/* =========================
+   HUD
+========================= */
+
+.hud {
+    height: 80px;
+    display: grid;
+    grid-template-columns: 150px 150px 1fr;
+    align-items: center;
+    border-bottom: 1px solid #464646;
+}
+
+.hud-item {
+    display: flex;
+    flex-direction: column;
+    padding-left: 15px;
+}
+
+.hud-label {
+    color: #969696;
+    font-size: 18px;
+    line-height: 18px;
+    letter-spacing: 1px;
+}
+
+.hud-value {
+    color: #e6e6e6;
+    font-size: 32px;
+    line-height: 32px;
+}
+
+/* =========================
+   RANKING
+========================= */
+
+.ranking {
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding-left: 15px;
+}
+
+#ranking-list {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    column-gap: 18px;
+    row-gap: 0;
+    margin-top: 2px;
+    color: #bebebe;
+    font-size: 17px;
+    line-height: 19px;
+}
+
+/* =========================
+   TABULEIRO
+========================= */
+
+.tabuleiro {
+    width: 500px;
+    height: 500px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    position: relative;
+    overflow: hidden;
+}
+
+/* =========================
+   CASAS
+========================= */
+
+.casa {
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    min-height: 0;
+    padding: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.casa.disponivel {
+    background: #beb4a5;
+    border: 2px solid #b4b4b4;
+    cursor: pointer;
+}
+
+.casa.disponivel.escura {
+    background: #786e64;
+}
+
+.casa.usada {
+    background: transparent;
+    border: none;
+    cursor: default;
+}
+
+/* =========================
+   PEÇAS
+========================= */
+
+.peca {
+    width: 70px;
+    height: 85px;
+    object-fit: contain;
+    user-select: none;
+    pointer-events: none;
+    z-index: 5;
+}
+
+/* =========================
+   CASA DA DAMA
+========================= */
+
+.casa.objetivo {
+    background: #ffc828;
+    border: 3px solid #ffeb64;
+    border-radius: 16px;
+    animation: pulsar 1.5s ease-in-out infinite;
+}
+
+.casa.objetivo::before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border-radius: 10px;
+    background: #ffc828;
+    border: 2px solid #ffeb64;
+    box-shadow:
+        0 0 12px rgba(255, 200, 40, 0.75),
+        inset 0 0 10px rgba(255, 235, 100, 0.45);
+    animation: pulsar-dama 1.2s ease-in-out infinite;
+    z-index: 1;
+}
+
+.casa.objetivo .peca {
+    position: relative;
+    z-index: 10;
+}
+
+/* =========================
+   PULSAÇÃO DA DAMA
+========================= */
+
+@keyframes pulsar-dama {
+    0% {
+        transform: scale(0.96);
+        box-shadow:
+            0 0 8px rgba(255, 200, 40, 0.45),
+            inset 0 0 8px rgba(255, 235, 100, 0.30);
+    }
+
+    50% {
+        transform: scale(1);
+        box-shadow:
+            0 0 18px rgba(255, 200, 40, 0.90),
+            inset 0 0 14px rgba(255, 235, 100, 0.65);
+    }
+
+    100% {
+        transform: scale(0.96);
+        box-shadow:
+            0 0 8px rgba(255, 200, 40, 0.45),
+            inset 0 0 8px rgba(255, 235, 100, 0.30);
+    }
+}
+
+@keyframes pulsar {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 200, 40, 0.25);
+    }
+
+    50% {
+        box-shadow: 0 0 18px 4px rgba(255, 200, 40, 0.65);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 200, 40, 0.25);
+    }
+}
+
+/* =========================
+   RESULTADO
+========================= */
+
+.resultado {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 80px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: rgba(20, 20, 20, 0.88);
+    z-index: 50;
+    pointer-events: none;
+}
+
+.resultado.escondido {
+    display: none;
+}
+
+#resultado-titulo {
+    margin: 0;
+    font-size: 60px;
+    letter-spacing: 2px;
+}
+
+#resultado-info {
+    margin-top: 20px;
+    color: #ffffff;
+    font-size: 32px;
+}
+
+.resultado-instrucao {
+    margin-top: 25px;
+    color: #b4b4b4;
+    font-size: 24px;
+}
+
+/* =========================
+   CORES DO RESULTADO
+========================= */
+
+.resultado.vitoria #resultado-titulo {
+    color: #daa520;
+}
+
+.resultado.derrota #resultado-titulo {
+    color: #b44646;
+}
+
+/* =========================
+   INSTRUÇÕES
+========================= */
+
+.instrucoes {
+    height: 90px;
+    border-top: 1px solid #505050;
+    margin-top: 10px;
+    padding-top: 10px;
+    text-align: center;
+    color: #b4b4b4;
+    font-size: 20px;
+}
+
+.instrucoes span {
+    margin: 0 15px;
+    color: #787878;
+}
+
+.instrucoes .objetivo {
+    margin-top: 7px;
+    color: #828282;
+    font-size: 18px;
+}
+
+/* =========================
+   CONTROLES
+========================= */
+
+.controles {
+    display: none;
+}
+
+/* =========================
+   CONTROLES MOBILE
+========================= */
+
+@media (max-width: 620px) {
+
+    .instrucao-teclado {
+    display: none;
+}
+
+    .controles {
+        width: 210px;
+        margin: 22px auto 20px;
+
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 60px);
+
+        gap: 8px;
+    }
+
+    .controle {
+        border: 1px solid #555;
+        border-radius: 10px;
+        background: #242424;
+        color: #e6e6e6;
+
+        font-family: "Rajdhani", sans-serif;
+        font-size: 28px;
+
+        cursor: pointer;
+
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+    }
+
+    .controle:active {
+        transform: scale(0.94);
+        background: #3a3a3a;
+    }
+
+    .controle-cima {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .controle-esquerda {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    .controle-reiniciar {
+        grid-column: 2;
+        grid-row: 2;
+        color: #ffc828;
+    }
+
+    .controle-direita {
+        grid-column: 3;
+        grid-row: 2;
+    }
+
+    .controle-baixo {
+        grid-column: 2;
+        grid-row: 3;
+    }
+}
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+
+@media (max-width: 620px) {
+
+    .game {
+        width: 100%;
+    }
+
+    .hud {
+        grid-template-columns: 1fr 1fr;
+        height: 100px;
+    }
+
+    .ranking {
+        display: none;
+    }
+
+    .tabuleiro {
+        width: min(90vw, 500px);
+        height: min(90vw, 500px);
+    }
+
+    .casa {
+        width: 100%;
+        height: 100%;
+    }
+
+    .peca {
+        width: 70%;
+        height: 80%;
+    }
+
+    .instrucoes {
+        font-size: 16px;
+        height: auto;
+        padding-bottom: 10px;
+    }
+
+    .instrucoes .objetivo {
+        font-size: 14px;
+    }
+}
